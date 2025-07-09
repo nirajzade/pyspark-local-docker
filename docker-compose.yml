@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  spark:
+    build: .
+    ports:
+      - "8888:8888"
+      - "7077:7077"
+      - "8080:8080"
+    volumes:
+      - ./notebooks:/opt/workspace
+    environment:
+      - PYSPARK_PYTHON=python3
+    command: start-notebook.sh --NotebookApp.token='' --NotebookApp.password=''
+
+volumes:
+  spark_data:
